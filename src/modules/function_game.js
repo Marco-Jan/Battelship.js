@@ -10,19 +10,19 @@ const SHIP_SIZES = [4, 3, 3, 2, 2, 2];
 // Klasse zum Erstellen des Spielfelds und Platzieren der Schiffe des NPC
 class CreateNPCBoard {
     constructor() {
-        this.board = [];
         this.ships = [];
+        this.valid = false;
+        this.gameboard = [];
+
         this.createBoard();
         this.placeShips();
     }
 
     createBoard() {
         for (let i = 0; i < SIZE; i++) {
-            this.board[i] = [];
-            console.log(i,'i');
+            this.gameboard[i] = [];
             for (let j = 0; j < SIZE; j++) {
-                this.board[i][j] = 0;
-                console.log(j,'j');
+                this.gameboard[i][j] = 0;
             }
         }
     }
@@ -33,15 +33,17 @@ class CreateNPCBoard {
             let direction = Math.floor(Math.random() * 2);
             let x = Math.floor(Math.random() * (SIZE - shipSize));
             let y = Math.floor(Math.random() * SIZE);
+
             for (let i = 0; i < shipSize; i++) {
                 if (direction === 0) {
+                    this.gameboard[x + i][y] = 1;
                     ship.push({ x: x + i, y: y, length: shipSize, valid: false });
-                    console.log(ship,'shipx');
                 } else {
+                    this.gameboard[x][y + i] = 1;
                     ship.push({ x: x, y: y + i, length: shipSize, valid: false });
-                    console.log(ship,'shipy');
                 }
             }
+
             this.ships.push(ship);
         }
     }
@@ -67,7 +69,7 @@ function renderNPCBoard(ships) {
         });
     });
 }
-  
+
 //export section
 export { CreateNPCBoard, renderNPCBoard };
 //export section end
