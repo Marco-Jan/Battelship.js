@@ -30,8 +30,34 @@ function createNPCBoard() {
 
     }
     console.log(npc_board,'npc_board');
+    return npc_board;
+   
+}
 
-  }
+// Funktion zeichnet das NPC-Spielfelds
+  function renderNPCBoard(npc_board) {
+
+  const cells = document.querySelectorAll('#playfield .cell');
+
+  // Alle Zellen auf den Standardzustand zurücksetzen
+  cells.forEach((cell) => {
+      cell.style.backgroundColor = 'white';
+  });
+
+  // Gesetzte Schiffe farbig darstellen
+  npc_board.forEach((ship) => {
+      ship.forEach(([x, y]) => {
+          const cellIndex = y * SIZE + x;
+          cells[cellIndex].style.backgroundColor = 'blue';
+      });
+  });
+}
+
+// NPC-Board erstellen
+const npcBoard = createNPCBoard();
+
+// NPC-Board in HTML rendern
+renderNPCBoard(npcBoard);
 
 
  
