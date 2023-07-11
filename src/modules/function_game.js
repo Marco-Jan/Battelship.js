@@ -52,18 +52,9 @@ function createNPCBoard() {
       });
   });
 }
-
-// NPC-Board erstellen
-const npcBoard = createNPCBoard();
-
-// NPC-Board in HTML rendern
-renderNPCBoard(npcBoard);
-
-
- 
   
   //expport section
 
-    export {createNPCBoard};
+    export {createNPCBoard,renderNPCBoard};
 
     //export section end
