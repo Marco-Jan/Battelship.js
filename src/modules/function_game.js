@@ -14,10 +14,10 @@ function createNPCBoard() {
 
     // Schiffe platzieren
     for (let shipSize of SHIP_SIZES) {
-        let ship = [];
-        let direction = Math.floor(Math.random() * 2);
-        let x = Math.floor(Math.random() * (SIZE - shipSize));
-        let y = Math.floor(Math.random() * SIZE);
+        const ship = [];
+        const direction = Math.floor(Math.random() * 2);
+        const x = Math.floor(Math.random() * (SIZE - shipSize));
+        const y = Math.floor(Math.random() * SIZE);
         for (let i = 0; i < shipSize; i++) {
             if (direction === 0) {
                 ship.push([x + i, y]);
@@ -26,8 +26,10 @@ function createNPCBoard() {
             }
         }
         npc_board.push(ship);
+        console.log(ship,'pushed ship');
+
     }
-    console.log(npc_board);
+    console.log(npc_board,'npc_board');
 
   }
 
