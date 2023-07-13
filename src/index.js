@@ -1,17 +1,22 @@
 import _ from 'lodash';
 import './style.css';
-// import Icon from './icon.png';
-import {createNPCBoard,renderNPCBoard} from './modules/function_game.js';
-let count = 50;
-let count_ships = 16;
+import { createfield } from './modules/fkt_gameBoard.js';
+import { canPlaceShip, createShips } from './modules/fkt_placeships.js';
+import { checkHit } from './modules/fkt_hitship.js';
+
+const ships = [4];
+const selectedColors = ["blue", "red", "green"];
 
 
-// NPC-Board erstellen
-const npcBoard = createNPCBoard();
+function init() {
+    createfield(selectedColors);
+    canPlaceShip(0, ships[0], "horizontal");
+    createShips();
+    checkHit();
+}
 
-function init(){
-    createNPCBoard();
-    renderNPCBoard(npcBoard);
-  }
-  
-  init();
+init();
+
+
+
+
