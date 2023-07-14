@@ -1,31 +1,43 @@
-//import section
+'use strict'
 
-//import section end
+const grid = [];
+console.log(grid);
 
-
-//Function section
-
-
-function createfield(selectedColors) {
-  class Box {
-    constructor(name) {
-      this.name = name;
-      this.placed = false;
+let createField = (gridSizex, gridSizey) => {
+  for (let i = 0; i < gridSizey; i++) {
+    const row = [];
+    for (let j = 0; j < gridSizex; j++) {
+      row.push('0');
     }
-  }
-
-  const cells = document.getElementsByClassName("cell");
-  for (let i = 0; i < cells.length; i++) {
-    const cell = cells[i];
-    const box = new Box("Name " + (i + 1));
-    cell.box = box;
-    cell.style.backgroundColor = selectedColors[0];
+    grid.push(row);
   }
 }
 
-//Function section end
-export { createfield };
+function displayGrid() {
+  const container = document.getElementById('grid-container');
 
-//export section end
+  // Lösche den Inhalt des Containers
+  container.innerHTML = '';
 
+  // Iteriere über das grid-Array und füge die Zellen in den Container ein
+  for (let i = 0; i < grid.length; i++) {
+      const row = grid[i];
+      const rowElement = document.createElement('div');
+      rowElement.classList.add('row');
 
+      for (let j = 0; j < row.length; j++) {
+          const cell = row[j];
+          const cellElement = document.createElement('div');
+          cellElement.classList.add('cell');
+          cellElement.textContent = cell;
+          cellElement.dataset.row = i.toString();
+          cellElement.dataset.col = j.toString();
+
+          rowElement.appendChild(cellElement);
+      }
+
+      container.appendChild(rowElement);
+  }
+}
+
+export { createField, grid, displayGrid };

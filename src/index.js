@@ -1,22 +1,20 @@
+'use strict'
+
+
 import _ from 'lodash';
 import './style.css';
-import { createfield } from './modules/fkt_gameBoard.js';
-import { canPlaceShip, createShips } from './modules/fkt_placeships.js';
-import { checkHit } from './modules/fkt_hitship.js';
+import { createField, grid, displayGrid } from './modules/fkt_gameBoard.js';
+import { pushShip } from './modules/fkt_placeships.js'; // Füge die Dateiendung ".js" hinzu
+import { CellEventListeners } from './modules/fkt_hitship.js';
 
-const ships = [4];
-const selectedColors = ["blue", "red", "green"];
-
+const gridSizex = 10;
+const gridSizey = 10;
 
 function init() {
-    createfield(selectedColors);
-    canPlaceShip(0, ships[0], "horizontal");
-    createShips();
-    checkHit();
+    createField(gridSizex, gridSizey);
+    pushShip(grid);
+    displayGrid();
+    CellEventListeners();
 }
 
 init();
-
-
-
-
