@@ -10,6 +10,7 @@ class Ship {
 
   setPosition(position) {
     this.position = position;
+    
   }
 
   setDirection(direction) {
@@ -38,14 +39,14 @@ let pushShip = grid => {
       ship.setDirection(direction);
     } while (!isValidPlacement(grid, ship));
 
-    const [row, col] = ship.position;
+    const [x, y] = ship.position;
     if (ship.direction === 'horizontal') {
       for (let i = 0; i < ship.length; i++) {
-        grid[row][col + i] = ship.toString();
+        grid[x][y + i] = ship.toString();
       }
     } else {
       for (let i = 0; i < ship.length; i++) {
-        grid[row + i][col] = ship.toString();
+        grid[x + i][y] = ship.toString();
       }
     }
   }
@@ -54,21 +55,22 @@ let pushShip = grid => {
 }
 
 let isValidPlacement = (grid, ship) => {
-  const [row, col] = ship.position;
+  const [x, y] = ship.position;
 
   if (ship.direction === 'horizontal') {
     for (let i = 0; i < ship.length; i++) {
-      if (col + i >= 10 || grid[row][col + i] !== '0') {
+      if (y + i >= 10 || grid[x][y + i] !== '0') {
         return false;
       }
     }
   } else {
     for (let i = 0; i < ship.length; i++) {
-      if (row + i >= 10 || grid[row + i][col] !== '0') {
+      if (x + i >= 10 || grid[x + i][y] !== '0') {
         return false;
       }
     }
   }
+  
 
   return true;
 }

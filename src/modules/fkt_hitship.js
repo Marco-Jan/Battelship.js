@@ -1,6 +1,8 @@
 'use strict'
 import { grid } from './fkt_gameBoard.js';
 
+
+
 let CellEventListeners = () => {
     const cells = document.getElementsByClassName('cell');
 
@@ -12,18 +14,20 @@ let CellEventListeners = () => {
 }
 
 let  CellClick = (event) => {
-    const row = parseInt(event.currentTarget.dataset.row);
-    const col = parseInt(event.currentTarget.dataset.col);
-    const result = checkHit(row, col);
+    const x = parseInt(event.currentTarget.dataset.row);
+    const y = parseInt(event.currentTarget.dataset.col);
+    const result = checkHit(x, y);
 
     displayHitMessage(result);
 }
 
-let checkHit = (row, col) => {
-    const cell = grid[row][col];
+let checkHit = (x, y) => {
+    const cell = grid[x][y];
+    console.log(grid[x][y]);
     if (cell === '4' || cell === '3' || cell === '2') {
         return true;
-    } else {
+    }
+    else {
         return false;
     }
 }

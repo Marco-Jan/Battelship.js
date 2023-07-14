@@ -16,10 +16,10 @@ let createField = (gridSizex, gridSizey) => {
 function displayGrid() {
   const container = document.getElementById('grid-container');
 
-  // Lösche den Inhalt des Containers
+  
   container.innerHTML = '';
 
-  // Iteriere über das grid-Array und füge die Zellen in den Container ein
+
   for (let i = 0; i < grid.length; i++) {
       const row = grid[i];
       const rowElement = document.createElement('div');
