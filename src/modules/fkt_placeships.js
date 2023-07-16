@@ -1,16 +1,20 @@
 'use strict'
 
 
+
 class Ship {
-  constructor(length) {
+  constructor(length, life) {
     this.length = length;
+    this.life = life;
     this.position = [];
     this.direction = '';
+
+
   }
 
   setPosition(position) {
     this.position = position;
-    
+
   }
 
   setDirection(direction) {
@@ -19,14 +23,22 @@ class Ship {
 
   toString() {
     return this.length.toString();
+
   }
+
 }
 
-const ships = [new Ship(4), new Ship(3), new Ship(3), new Ship(2), new Ship(2), new Ship(2)];
+
+
+const ships = [new Ship(4, 4), new Ship(3, 3), new Ship(3, 3), new Ship(2, 2), new Ship(2, 2), new Ship(2, 2)];
+
+console.log(ships, 'shipbefore');
+
 
 let pushShip = grid => {
   for (let i = 0; i < ships.length; i++) {
     const ship = ships[i];
+    // console.log(ship,'ship');
     let randomIndexOut;
     let randomIndexInner;
     let direction;
@@ -49,6 +61,7 @@ let pushShip = grid => {
         grid[x + i][y] = ship.toString();
       }
     }
+
   }
 
   return grid;
@@ -70,12 +83,30 @@ let isValidPlacement = (grid, ship) => {
       }
     }
   }
-  
+
 
   return true;
 }
 
-export { pushShip };
+let decreaseLife = (result) => {
+
+  for (let i = 0; i < ships.life; i++) {
+    const lifes = ships[i];
+    console.log(lifes, 'i');
+  
+
+  if (result === true) {
+    console.log("isHit ist true");
+    // ship.life--;
+    // console.log(ship.life, 'life');
+    console.log(ships, 'shipafter');
+  } else {
+    console.log("isHit ist false");
+  }
+}
+
+}
+  export { pushShip, ships, decreaseLife };
 
 
 
