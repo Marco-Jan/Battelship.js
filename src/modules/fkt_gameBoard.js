@@ -1,23 +1,27 @@
 'use strict'
 
-const grid = [];
-console.log(grid);
 
-let createField = (gridSizex, gridSizey) => {
-  for (let i = 0; i < gridSizey; i++) {
-    const row = [];
-    for (let j = 0; j < gridSizex; j++) {
-      row.push('0');
-    }
-    grid.push(row);
+module.exports = class GameBoard {
+  constructor(gridSizex, gridSizey) {
+    this.gridSizex = gridSizex;
+    this.gridSizey = gridSizey;
+    this.grid = [];
   }
-}
 
-function displayGrid() {
-  const container = document.getElementById('grid-container');
+  createField() {
+    for (let i = 0; i < this.gridSizey; i++) {
+      const row = [];
+      for (let j = 0; j < this.gridSizex; j++) {
+        row.push('0');
+      }
+      this.grid.push(row);
+    }
+  }
 
-  
-  container.innerHTML = '';
+  displayGrid() {
+    const container = document.getElementById('grid-container');
+
+    container.innerHTML = '';
 
 
   for (let i = 0; i < grid.length; i++) {
@@ -38,6 +42,8 @@ function displayGrid() {
 
       container.appendChild(rowElement);
   }
+  }
 }
 
-export { createField, grid, displayGrid };
+
+// export { createField, grid, displayGrid };
