@@ -38,7 +38,7 @@ console.log(ships, 'shipbefore');
 let pushShip = grid => {
   for (let i = 0; i < ships.length; i++) {
     const ship = ships[i];
-    // console.log(ship,'ship');
+    console.log(ship,'ship');
     let randomIndexOut;
     let randomIndexInner;
     let direction;

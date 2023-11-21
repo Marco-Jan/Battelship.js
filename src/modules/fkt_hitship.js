@@ -1,5 +1,5 @@
 'use strict'
-import { grid, ships } from './fkt_gameBoard.js';
+import { grid } from './fkt_gameBoard.js';
 import { decreaseLife } from './fkt_placeships.js';
 
 let CellEventListeners = () => {
@@ -35,11 +35,8 @@ let checkHit = (x, y) => {
 
 
 let displayHitMessage = (isHit)  => {
-
     console.log(isHit ? 'Treffer!' : 'Kein Treffer!');
-    
     console.log('klick');
-    
     
 }
 
