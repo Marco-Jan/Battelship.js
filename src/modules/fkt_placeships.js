@@ -60,8 +60,8 @@ let pushShip = grid => {
       for (let i = 0; i < ship.length; i++) {
         grid[x + i][y] = ship.toString();
       }
-    }
 
+    }  
   }
 
   return grid;
@@ -91,15 +91,15 @@ let isValidPlacement = (grid, ship) => {
 let decreaseLife = (result) => {
 
   for (let i = 0; i < ships.life; i++) {
-    const lifes = ships[i];
+    const ships = ships[i];
     console.log(lifes, 'i');
   
 
   if (result === true) {
     console.log("isHit ist true");
     // ship.life--;
-    // console.log(ship.life, 'life');
-    console.log(ships, 'shipafter');
+    // console.log(ships.life, 'life');
+    // console.log(ships, 'shipafter');
   } else {
     console.log("isHit ist false");
   }
